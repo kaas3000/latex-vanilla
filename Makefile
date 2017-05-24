@@ -1,3 +1,3 @@
 clean:
-	@rm .git/
+	@rm -rf .git/
 	@rm Makefile
