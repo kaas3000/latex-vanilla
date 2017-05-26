@@ -1,0 +1,38 @@
+\documentclass[a4paper]{report}
+
+\usepackage{analyse}
+
+\graphicspath{
+	{afbeeldingen/}
+}
+
+\newcommand{\theauthor}{[author]}
+\newcommand{\thetitle}{[title]}
+\newcommand{\thesubtitle}{[subtitle]}
+\newcommand{\thedate}{[date]}
+\newcommand{\version}{{\input{{VERSION}}\unskip\unskip}-\gitAbbrevHash}
+
+\author{\theauthor}
+\title{\thetitle}
+\date{\thedate}
+
+\begin{document}
+
+	\input{titelblad}
+
+	\tableofcontents
+
+	\pagenumbering{gobble}
+	\normalsize
+
+	% Input introduction chapter here
+
+	\pagenumbering{arabic}
+	\setcounter{page}{1}
+
+	% Input chapters here
+
+	% Uncomment lines below to add bibliography
+	% \bibliographystyle{apacite}
+	% \bibliography{bronnen}
+\end{document}

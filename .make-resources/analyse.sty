@@ -1,0 +1,105 @@
+\ProvidesPackage{analyse}
+
+\RequirePackage[l2tabu, orthodox]{nag}
+\usepackage[table]{xcolor}
+\usepackage[dutch]{babel}
+\usepackage{geometry}
+\usepackage{microtype}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{graphicx}
+% \usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{multirow}
+\usepackage{enumitem}
+\usepackage{pdfpages}
+\usepackage[natbibapa]{apacite}
+\usepackage{natbib}
+\usepackage{tocbibind}
+\usepackage{float}
+\usepackage{subcaption}
+\usepackage{wrapfig}
+\usepackage{listings}
+\usepackage{mdframed}
+\usepackage[missing=0, local]{gitinfo2}
+\usepackage{makeidx}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{longtable}
+% \usepackage{showkeys}
+\usepackage[colorlinks=false, pdfborder={0 0 0}, breaklinks=true]{hyperref}
+
+% Remove "chapter" before every new chapter, just show the chapter index
+%\addto\captionsdutch{\renewcommand{\chaptername}{}}
+
+\geometry{a4paper}
+
+% Font options
+\renewcommand*\rmdefault{ppl}
+% \renewcommand{\familydefault}{\rmdefault}
+\renewcommand{\familydefault}{\sfdefault}
+
+
+% Add header to top of page
+\pagestyle{fancy}
+
+% Make paragraphs stick together
+\widowpenalty=3000
+\clubpenalty=3000
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.98,0.98,0.95}
+
+\lstdefinestyle{colored}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+ 
+\global\mdfdefinestyle{algorithm}{%
+	backgroundcolor			= backcolour	,%
+	leftmargin				= 1em			,%
+	rightmargin				= 1em
+}
+
+
+\definecolor{textcolor}{HTML}{333333}
+\definecolor{accent1}{HTML}{642140}
+\definecolor{relaxing1}{HTML}{E0D2D8}
+\definecolor{accent2}{HTML}{77BC1F}
+
+% Restyle chapter
+\titleformat{\chapter}[hang]{\huge\bfseries}{\thechapter}{1em}{}{\Huge\bfseries}
+
+\titlespacing{\chapter}{0pt}{1em plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+\renewcommand{\chaptermark}[1]{%
+	\markboth{\MakeUppercase{%
+			\ \thechapter.%
+	\ #1}}{}}
+
+% Attatchment
+\newcommand{\appendpdf}[2]{
+    \includepdf[pages=1, offset=0 -30, trim=0em 14em 0em 7em, scale=0.8, pagecommand=\chapter{#2}]{bijlagen/#1}
+    \includepdf[pages=2-, offset=0 5, trim=0em 14em 0em 7em, scale=0.8, pagecommand={}]{bijlagen/#1}
+}
+
+\makeindex
+
+% MoSCoW table cell
+\newcommand{\moscow}[2]{ \rule{0pt}{1.3em} {\Large #1 }\\ \emph{#2} }
